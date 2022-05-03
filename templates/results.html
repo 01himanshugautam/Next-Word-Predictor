@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block title %} Predictions {% endblock %}
+
+{% block content %}
+
+<br> <br> <br>
+
+<h2> Predictions </h2>
+
+<br> <br> <br>
+
+{% if predictions %}
+    {% for prediction in predictions %}
+        <ul class="list-group mb-5">
+            <a class="list-group-item list-group-item-action">{{prediction}}
+                <button class="btn-danger btn-sm" style="float:right" onclick="window.location.href='/wrong/{{prediction}}';">WRONG</button>
+                &nbsp&nbsp
+                <button class="btn-success btn-sm mr-2" style="float:right" onclick="window.location.href='/correct/{{prediction}}';">CORRECT</button>
+            </a>
+        </ul>
+    {% endfor %}
+{% endif %}
+{% endblock %}
