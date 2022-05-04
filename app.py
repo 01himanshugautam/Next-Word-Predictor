@@ -47,6 +47,13 @@ def get_accuracy():
     accuracy = str(correct_values / (correct_values + wrong_values) * 100.00) + ' %'
     return render_template('accuracy.html', correct_values=correct_values, wrong_values=wrong_values, accuracy=accuracy)
 
+@app.route("/history", methods=['GET', 'POST'])
+def get_history():
+    col = db["history"]
+    data=col.find().sort("_id", -1) 
+    return render_template('history.html',data=data)
+
+
 @app.route('/correct/<prediction>', methods=['GET', 'POST'])
 def correct(prediction):
     db.correct.insert_one({

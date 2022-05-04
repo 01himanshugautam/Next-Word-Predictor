@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+
+<br> <br> <br>
+
+<h2> History </h2>
+{% if data %}
+<br> <br> <br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Sentences</th>
+            <th scope="col">predictions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for index in data %}
+        <tr>
+            <th scope="row">{{index._id}}</th>
+            <td>{{index.sentence}}</td>
+            <td>{{index.predictions}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %} {% endblock %}
